@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KundenverwaltungV1.Properties {
+namespace KundenVerwaltungDT112019.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace KundenverwaltungV1.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KundenverwaltungV1.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KundenVerwaltungDT112019.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,6 +63,16 @@ namespace KundenverwaltungV1.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _800px_COLOURBOX9194816 {
+            get {
+                object obj = ResourceManager.GetObject("800px_COLOURBOX9194816", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap kundenverwaltugn {
             get {
                 object obj = ResourceManager.GetObject("kundenverwaltugn", resourceCulture);
@@ -76,6 +86,36 @@ namespace KundenverwaltungV1.Properties {
         internal static System.Drawing.Bitmap Kundenverwaltung2 {
             get {
                 object obj = ResourceManager.GetObject("Kundenverwaltung2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MB_Roevenich_Start {
+            get {
+                object obj = ResourceManager.GetObject("MB-Roevenich-Start", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MB_Roevenich_Start1 {
+            get {
+                object obj = ResourceManager.GetObject("MB-Roevenich-Start1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MB_Roevenich_Start2 {
+            get {
+                object obj = ResourceManager.GetObject("MB-Roevenich-Start2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

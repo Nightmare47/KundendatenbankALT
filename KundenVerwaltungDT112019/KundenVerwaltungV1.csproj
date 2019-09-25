@@ -97,5 +97,17 @@
   <ItemGroup>
     <None Include="Resources\Kundenverwaltung2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\800px_COLOURBOX9194816.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MB-Roevenich-Start.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MB-Roevenich-Start1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MB-Roevenich-Start2.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

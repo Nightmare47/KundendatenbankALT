@@ -12,67 +12,96 @@ namespace KundenverwaltungV1
 {
     public partial class Form1 : Form
     {
-        public struct TKunde
+        public struct Kundendaten
         {
-            public int kundenNr;
-            public string vorname;
-            public string nachname;
-            public int plz;
-            public string ort;
-            public int telefonnummer;
-            public int fax;
-            public string email;
+            public int Kundennummer;
+            public string Vorname;
+            public string Nachname;
+            public int Postleitzahl;
+            public string Wohnort;
+            public string Telefonnummer;
+            public string Faxnummer;
+            public string Emailadresse;
+            public string Land;
+            public string Sprache;
         }
 
-        TKunde meinKunde;
-        int i = 0;
-        int letzter = 0;
+        int a = 0;
+        int schlusswert = 0;
 
 
-        TKunde []kundenDB = new TKunde[100];
+        Kundendaten[] Kundendatenbank = new Kundendaten[210];
 
-        public void schreiben()
+        public void Lesen()
+        {
+            System.IO.StreamReader datensatz;
+            datensatz = new System.IO.StreamReader("Kundendatensaetze.txt");
+            schlusswert = Convert.ToInt32(datensatz.ReadLine());
+            for (int b = 0; b < schlusswert; b++)
+            {
+                Kundendatenbank[b].Kundennummer = Convert.ToInt32(datensatz.ReadLine());
+                Kundendatenbank[b].Vorname = datensatz.ReadLine();
+                Kundendatenbank[b].Nachname = datensatz.ReadLine();
+                Kundendatenbank[b].Postleitzahl = Convert.ToInt32(datensatz.ReadLine());
+                Kundendatenbank[b].Wohnort = datensatz.ReadLine();
+                Kundendatenbank[b].Telefonnummer = datensatz.ReadLine();
+                Kundendatenbank[b].Faxnummer = datensatz.ReadLine();
+                Kundendatenbank[b].Emailadresse = datensatz.ReadLine();
+                Kundendatenbank[b].Land = datensatz.ReadLine();
+                Kundendatenbank[b].Sprache = datensatz.ReadLine();
+            }
+            datensatz.Close();
+        }
+
+        public void Schreiben()
         {
             int z;
-            System.IO.StreamWriter meineDatei;
-            meineDatei = new System.IO.StreamWriter("kundendaten.txt");
-            meineDatei.WriteLine(letzter);
-            for (z = 0; z < letzter; z++)
+            System.IO.StreamWriter Kundendatzensatze;
+            Kundendatzensatze = new System.IO.StreamWriter("Kundendatensaetze.txt");
+            Kundendatzensatze.WriteLine(schlusswert);
+            for (z = 0; z < schlusswert; z++)
 
             {
-                meineDatei.WriteLine(kundenDB[z].kundenNr);
-                meineDatei.WriteLine(kundenDB[z].vorname);
-                meineDatei.WriteLine(kundenDB[z].nachname);
-                meineDatei.WriteLine(kundenDB[z].plz);
-                meineDatei.WriteLine(kundenDB[z].ort);
-                meineDatei.WriteLine(kundenDB[z].telefonnummer);
-                meineDatei.WriteLine(kundenDB[z].fax);
-                meineDatei.WriteLine(kundenDB[z].email);
+                Kundendatzensatze.WriteLine(Kundendatenbank[z].Kundennummer);
+                Kundendatzensatze.WriteLine(Kundendatenbank[z].Vorname);
+                Kundendatzensatze.WriteLine(Kundendatenbank[z].Nachname);
+                Kundendatzensatze.WriteLine(Kundendatenbank[z].Postleitzahl);
+                Kundendatzensatze.WriteLine(Kundendatenbank[z].Wohnort);
+                Kundendatzensatze.WriteLine(Kundendatenbank[z].Telefonnummer);
+                Kundendatzensatze.WriteLine(Kundendatenbank[z].Faxnummer);
+                Kundendatzensatze.WriteLine(Kundendatenbank[z].Emailadresse);
+                Kundendatzensatze.WriteLine(Kundendatenbank[z].Land);
+                Kundendatzensatze.WriteLine(Kundendatenbank[z].Sprache);
             }
-            meineDatei.Close();
+            Kundendatzensatze.Close();
         }
 
-        public void anzeigen()
+        public void Anzeigen()
         {
-            textBoxKundenNr.Text = Convert.ToString(kundenDB[i].kundenNr);
-            textBoxVorName.Text = kundenDB[i].vorname;
-            textBoxNachName.Text = kundenDB[i].nachname;
-            textBoxPLZ.Text = Convert.ToString(kundenDB[i].plz);
-            textBoxOrt.Text = kundenDB[i].ort;
-            textBoxPLZ.Text = Convert.ToString(kundenDB[i].telefonnummer);
-            textBoxPLZ.Text = Convert.ToString(kundenDB[i].fax);
-            textBoxOrt.Text = kundenDB[i].email;
+            textBoxKundenNr.Text = Convert.ToString(Kundendatenbank[a].Kundennummer);
+            textBoxVorName.Text = Kundendatenbank[a].Vorname;
+            textBoxNachName.Text = Kundendatenbank[a].Nachname;
+            textBoxPLZ.Text = Convert.ToString(Kundendatenbank[a].Postleitzahl);
+            textBoxOrt.Text = Kundendatenbank[a].Wohnort;
+            textBoxTelefonnummer.Text = Kundendatenbank[a].Telefonnummer;
+            textBoxFax.Text = Kundendatenbank[a].Faxnummer;
+            textBoxEmail.Text = Kundendatenbank[a].Emailadresse;
+            textBoxLand.Text = Kundendatenbank[a].Land;
+            textBoxSprache.Text = Kundendatenbank[a].Sprache;
         }
 
-        public void loeschen()
+        public void Loeschen()
         {
             textBoxKundenNr.Text = "";
             textBoxVorName.Text = "";
             textBoxNachName.Text = "";
             textBoxPLZ.Text = "";
             textBoxTelefonnummer.Text = "";
+            textBoxOrt.Text = "";
             textBoxFax.Text = "";
             textBoxEmail.Text = "";
+            textBoxLand.Text = "";
+            textBoxSprache.Text = "";
 
         }
         public Form1()
@@ -82,16 +111,16 @@ namespace KundenverwaltungV1
 
         private void buttonSpeichern_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(textBoxPLZ);
-
-            kundenDB[i].kundenNr = Convert.ToInt32(textBoxKundenNr.Text);
-            kundenDB[i].vorname = textBoxVorName.Text;
-            kundenDB[i].nachname = textBoxNachName.Text;
-            kundenDB[i].plz = Convert.ToInt32(textBoxPLZ.Text);
-            kundenDB[i].ort = textBoxOrt.Text;
-            kundenDB[i].telefonnummer = Convert.ToInt32(textBoxTelefonnummer.Text);
-            kundenDB[i].fax = Convert.ToInt32(textBoxFax.Text);
-            kundenDB[i].ort = textBoxEmail.Text;
+            Kundendatenbank[a].Kundennummer = Convert.ToInt32(textBoxKundenNr.Text);
+            Kundendatenbank[a].Vorname = textBoxVorName.Text;
+            Kundendatenbank[a].Nachname = textBoxNachName.Text;
+            Kundendatenbank[a].Postleitzahl = Convert.ToInt32(textBoxPLZ.Text);
+            Kundendatenbank[a].Wohnort = textBoxOrt.Text;
+            Kundendatenbank[a].Telefonnummer = textBoxTelefonnummer.Text;
+            Kundendatenbank[a].Faxnummer = textBoxFax.Text;
+            Kundendatenbank[a].Emailadresse = textBoxEmail.Text;
+            Kundendatenbank[a].Land = textBoxEmail.Text;
+            Kundendatenbank[a].Sprache = textBoxEmail.Text;
             buttonSpeichern.Enabled = false;
         }
 
@@ -110,45 +139,47 @@ namespace KundenverwaltungV1
             textBoxTelefonnummer.Text = "";
             textBoxFax.Text = "";
             textBoxEmail.Text = "";
+            textBoxLand.Text = "";
+            textBoxSprache.Text = "";
         }
 
         private void buttonAnfang_Click(object sender, EventArgs e)
         {
-            i = 0;
-            anzeigen();
+            a = 0;
+            Anzeigen();
         }
 
         private void buttonEnde_Click(object sender, EventArgs e)
         {
-            i = 99;
-            anzeigen();
+            a = Kundendatenbank.Length -1;
+            Anzeigen();
         }
 
         private void buttonZurueck_Click(object sender, EventArgs e)
         {
-            if (i > 0)
+            if (a > 0)
             {
-                i = i - 1;
+                a = a - 1;
             }
-            anzeigen();
+            Anzeigen();
         }
 
         private void buttonVor_Click(object sender, EventArgs e)
         {
-            if (i< 99)
+            if (a < Kundendatenbank.Length - 1)
             {
-                i = i + 1;
+                a = a + 1;
             }
-            anzeigen();
+            Anzeigen();
         }
 
         private void buttonHinzufuegen_Click(object sender, EventArgs e)
         {
-            loeschen();
-            i = letzter;
-            textBoxKundenNr.Text = Convert.ToString(i);
+            Loeschen();
+            a = schlusswert;
+            textBoxKundenNr.Text = Convert.ToString(a);
             buttonSpeichern.Enabled = true;
-            letzter = letzter + 1;
+            schlusswert = schlusswert + 1;
 
         }
 
@@ -157,19 +188,33 @@ namespace KundenverwaltungV1
             buttonSpeichern.Enabled = false;
         }
 
-        private void Label1_Click(object sender, EventArgs e)
+        private void ButtonLaden_Click(object sender, EventArgs e)
         {
-
+            Lesen();
+            Anzeigen();
         }
 
-        private void Label2_Click(object sender, EventArgs e)
+        private void ButtonSchreiben_Click(object sender, EventArgs e)
         {
-
+            Schreiben();
         }
 
-        private void Label9_Click(object sender, EventArgs e)
+        private void Buttonallesloeschen_Click(object sender, EventArgs e)
         {
+            DialogResult Ergebnis1 = MessageBox.Show("Möchten Sie wirklich alle Datensätze löschen?",
+              "Alle Datensätze löschen",
+                 MessageBoxButtons.YesNo,
+                 MessageBoxIcon.Question,
+                 MessageBoxDefaultButton.Button2);
 
+            if (Ergebnis1 == DialogResult.Yes)
+            {
+                Kundendatenbank = new Kundendaten[210];
+                a = 0;
+                schlusswert = 0;
+                Loeschen();
+                buttonSpeichern.Enabled = false;
+            }
         }
     }
 }
